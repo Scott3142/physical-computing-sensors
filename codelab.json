@@ -1,0 +1,26 @@
+{
+  "environment": "web",
+  "source": "1nzLNTZ5hkCE-hWRMZeqENkq1YVXBlk067BmqAf10uuk",
+  "format": "html",
+  "prefix": "../../",
+  "mainga": "UA-49880327-14",
+  "updated": "2020-01-08T17:06:15Z",
+  "id": "physical-computing-sensors",
+  "duration": 29,
+  "title": "Physical Computing - Sensors",
+  "author": "Scott Morgan",
+  "summary": "This tutorial will guide you through the Physical Computing - Sensors class delivered at Bridgend College on 9th January 2019.",
+  "theme": "raspberrypi",
+  "status": [
+    "published"
+  ],
+  "category": [
+    "raspberrypi"
+  ],
+  "tags": [
+    "rpi"
+  ],
+  "feedback": "https://github.com/Scott3142/physical-computing-sensors",
+  "ga": "UA-214872164-1",
+  "url": "physical-computing-sensors"
+}

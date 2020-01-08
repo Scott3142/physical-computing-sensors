@@ -1,0 +1,233 @@
+
+<!doctype html>
+
+<html>
+<head>
+  <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=yes">
+  <meta name="theme-color" content="#4F7DC9">
+  <meta charset="UTF-8">
+  <title>Physical Computing - Sensors</title>
+  <script src="../../bower_components/webcomponentsjs/webcomponents-lite.min.js"></script>
+  <link rel="import" href="../../elements/codelab.html">
+  <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Source+Code+Pro:400|Roboto:400,300,400italic,500,700|Roboto+Mono">
+  <style>
+    body {
+      font-family: "Roboto",sans-serif;
+    }
+  </style>
+  
+</head>
+<body unresolved class="fullbleed">
+
+  <google-codelab title="Physical Computing - Sensors"
+                  environment="web"
+                  feedback-link="https://github.com/Scott3142/physical-computing-sensors">
+    
+      <google-codelab-step label="Introduction" duration="2">
+        <p><img style="max-width: 624.00px" src="img/535325f436e201be.png"></p>
+<p><strong>Last Updated:</strong> 2019-11-19</p>
+<h2><strong>Activity Overview</strong></h2>
+<aside class="special"><p>This tutorial follows the Slide deck available here - <a href="https://tinyurl.com/smbc-physical-computing" target="_blank">https://tinyurl.com/smbc-physical-computing</a>.</p>
+</aside>
+<p><a href="https://docs.google.com/presentation/d/1JJMETysDYrQuUHeJqWz8fPS6hDJoRRuK7GSJ5kn5JDQ/edit?usp=sharing" target="_blank"><paper-button class="colored" raised><iron-icon icon="file-download"></iron-icon>Download Slide deck</paper-button></a></p>
+<aside class="warning"><p><strong>Important:</strong> Raspberry Pi and other microcontrollers are sensitive to static electricity. Please take care when handling the devices. They are temperamental and can break easily. </p>
+</aside>
+<p>Throughout this class you will develop: </p>
+<p><strong><em>Your understanding of physical computing and sensors which drive automated systems.</em></strong></p>
+<p><strong><em>Your understanding of: </em></strong></p>
+<ul>
+<li>Raspberry Pi</li>
+<li>Python programming</li>
+<li>Ultrasonic sensors</li>
+</ul>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="Setting Up" duration="5">
+        <h2><strong>Connecting the Raspberry Pi </strong></h2>
+<aside class="special"><p>This section describes the setting up and connecting of the Pi and the Pi camera.</p>
+</aside>
+<p><a href="https://docs.google.com/presentation/d/1JJMETysDYrQuUHeJqWz8fPS6hDJoRRuK7GSJ5kn5JDQ/edit?usp=sharing" target="_blank"><paper-button class="colored" raised><iron-icon icon="file-download"></iron-icon>Download Slide deck</paper-button></a></p>
+<p>See the image below for instructions on how to connect the Pi and the Pi camera. The camera will have already been connected for you.</p>
+<p><img style="max-width: 522.35px" src="img/8fac3c02c070e88c.png"></p>
+<p><img style="max-width: 490.51px" src="img/44ff107308f9e9af.png"></p>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="Testing the Camera" duration="5">
+        <h2><strong>Activity Overview </strong></h2>
+<aside class="special"><p>This section describes installing and testing the camera.</p>
+</aside>
+<p><a href="https://docs.google.com/presentation/d/1JJMETysDYrQuUHeJqWz8fPS6hDJoRRuK7GSJ5kn5JDQ/edit?usp=sharing" target="_blank"><paper-button class="colored" raised><iron-icon icon="file-download"></iron-icon>Download Slide deck</paper-button></a></p>
+<h2><strong>Step 1:</strong></h2>
+<p>Before getting started with the camera module, we will have to make sure it is enabled via the config page. To do this, you&#39;ll need to open a Raspberry Pi terminal. You can do that by following the instructions <a href="https://www.raspberrypi.org/documentation/usage/terminal/" target="_blank">here</a>.</p>
+<ul>
+<li>Open a terminal and run:</li>
+</ul>
+<pre><code>sudo raspi-config</code></pre>
+<ul>
+<li>Navigate to <strong><code>Interfacing Options</code></strong><strong> </strong>and select <strong><code>Camera.</code></strong> Select the option to enable the camera and reboot the Pi.</li>
+</ul>
+<h2><strong>Step 2:</strong></h2>
+<p>Once the camera module is connected, you should be able to take a picture by entering the following command into a terminal. You should see the camera preview for 5 seconds before it disappears. </p>
+<pre><code>raspistill -o picture.jpg</code></pre>
+<h2><strong>Step 3:</strong></h2>
+<p>This step allows us to control the camera module via Python. Open a Python window by following the steps below. </p>
+<p><img style="max-width: 507.00px" src="img/8d97829eaba49fd9.png"></p>
+<ul>
+<li>Navigate to the Raspberry in the top left hand corner of the screen.</li>
+<li>Click Programming. </li>
+<li>Click Thonny Python IDE.</li>
+</ul>
+<p>Enter the following code and hit run. You will have to save the file first. <strong>DO NOT SAVE THE FILE AS </strong><strong><em>picamera.py</em></strong>.</p>
+<pre><code>from picamera import PiCamera
+from time import sleep
+
+camera = PiCamera()
+
+camera.start_preview()
+sleep(5)
+camera.stop_preiew()</code></pre>
+<h2><strong>Task:</strong></h2>
+<aside class="special"><p>There is an error in this code. Can you find it?</p>
+</aside>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="Testing the sensor" duration="5">
+        <h2><strong>Activity Overview</strong></h2>
+<aside class="special"><p>This section describes installing and testing the ultrasonic sensor.</p>
+</aside>
+<p><a href="https://docs.google.com/presentation/d/1JJMETysDYrQuUHeJqWz8fPS6hDJoRRuK7GSJ5kn5JDQ/edit?usp=sharing" target="_blank"><paper-button class="colored" raised><iron-icon icon="file-download"></iron-icon>Download Slide deck</paper-button></a></p>
+<p>Ensure you have wired up the ultrasonic sensor to the Raspberry Pi as shown in the Slide deck. </p>
+<p><img style="max-width: 624.00px" src="img/9ec84874f2754f6a.png"></p>
+<p>Once that is done, open a new Thonny Python IDE file and type the following code.</p>
+<pre><code>from time import sleep
+import DistanceSensor
+
+pinTrigger = 17 
+pinEcho = 18 
+
+sensor = DistanceSensor(echo=pinEcho, trigger=pinTigger)
+
+try: 
+    while True: 
+        print(senor.distance)
+        sleep(1)
+
+except KeyboardInterrupt:
+    print(‘Exiting&#39;)</code></pre>
+<h2><strong>Task:</strong></h2>
+<aside class="special"><p>There are two errors in this code. Can you find them?</p>
+</aside>
+<ul>
+<li>You can read more about the ultrasonic sensor <a href="https://github.com/CamJam-EduKit/EduKit3/blob/master/CamJam%20Edukit%203%20-%20GPIO%20Zero/CamJam%20EduKit%203%20-%20Robotics%20Worksheet%206%20(GPIO%20Zero)%20-%20Distance.pdf" target="_blank">here</a>.</li>
+</ul>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="Bringing it together" duration="5">
+        <h2><strong>Activity Overview</strong></h2>
+<aside class="special"><p>This section describes finalising the full system. We will use our sensor to trigger an image being taken by the camera.</p>
+</aside>
+<p><a href="https://docs.google.com/presentation/d/1JJMETysDYrQuUHeJqWz8fPS6hDJoRRuK7GSJ5kn5JDQ/edit?usp=sharing" target="_blank"><paper-button class="colored" raised><iron-icon icon="file-download"></iron-icon>Download Slide deck</paper-button></a></p>
+<p>Type the following into the Python Thonny IDE window and hit run. Most of this can be copied and pasted from the other codes you have written previously.</p>
+<pre><code>from picamera import PiCamera
+from gpiozero import DistanceSensor
+from time import sleep
+
+pinTrigger = 17
+pinEcho = 18
+sensor = DistanceSensor(echo=pinEcho, trigger=pinTrigger)
+
+camera = PiCamera()
+camera.rotation = 180
+
+try:
+    while True:
+        print(&#39;Distance:&#39;)
+        print(sensor.distance)
+        sleep(0.5)
+        if sensor.distance &lt; 1.0:
+            print(&#39;Motion detected! Taking picture.&#39;)
+            camera.capture(&#39;/home/pi/Desktop/image.jpg&#39;)
+            print(&#39;Picture captured! Check the desktop.&#39;)
+            sleep(0.5)
+
+except KeyboardInterrupt:
+    print(&#39;Exiting&#39;)</code></pre>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="Improving the system" duration="5">
+        <h2><strong>Activity Overview</strong></h2>
+<aside class="special"><p>This system is currently very primitive and many improvements can be made. Have a think about how you could improve it before releasing it for production.</p>
+</aside>
+<p><a href="https://slido.com" target="_blank"><paper-button class="colored" raised>Go to Slido</paper-button></a></p>
+<p>Use the code <strong>#sensors.</strong></p>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="Conclusion" duration="2">
+        <p>Congratulations, you have reached the end of the tutorial. Good luck!</p>
+<p>If you have any questions, please contact Scott Morgan | <a href="mailto:smorgan@bridgend.ac.uk" target="_blank">smorgan@bridgend.ac.uk</a>.</p>
+<p><a href="https://docs.google.com/presentation/d/1JJMETysDYrQuUHeJqWz8fPS6hDJoRRuK7GSJ5kn5JDQ/edit?usp=sharing" target="_blank"><paper-button class="colored" raised><iron-icon icon="file-download"></iron-icon>Download Slide deck</paper-button></a></p>
+<p><strong>Next steps:</strong></p>
+<p>If you&#39;re interested in this, you should learn:</p>
+<ul>
+<li><strong>... to code in Python. </strong></li>
+<li><strong>... about Raspberry Pi hardware. </strong></li>
+<li><strong>... to solder.</strong></li>
+</ul>
+<p>See more info in the <a href="https://docs.google.com/presentation/d/1JJMETysDYrQuUHeJqWz8fPS6hDJoRRuK7GSJ5kn5JDQ/edit?usp=sharing" target="_blank">Slide deck</a>.</p>
+<p><strong>Resources &amp; Further Reading:</strong></p>
+<ul>
+<li>Codewars - <a href="https://www.codewars.com/" target="_blank">https://www.codewars.com/</a> </li>
+<li>Codecademy - <a href="https://www.codecademy.com/" target="_blank">https://www.codecademy.com/</a></li>
+<li>W3Schools  - <a href="https://www.w3schools.com/" target="_blank">https://www.w3schools.com/</a> </li>
+<li>Raspberry Pi Foundation - <a href="https://projects.raspberrypi.org/en/projects/raspberry-pi-getting-started" target="_blank">https://projects.raspberrypi.org/en/projects/raspberry-pi-getting-started</a></li>
+<li>Codeclub - <a href="https://projects.raspberrypi.org/en/codeclub" target="_blank">https://projects.raspberrypi.org/en/codeclub</a></li>
+<li>FutureLearn - <a href="https://www.futurelearn.com/partners/raspberry-pi" target="_blank">https://www.futurelearn.com/partners/raspberry-pi</a>  </li>
+</ul>
+
+
+      </google-codelab-step>
+    
+  </google-codelab>
+
+  <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+    ga('create', 'UA-49880327-14', 'auto');
+
+    (function() {
+      var gaCodelab = 'UA-214872164-1';
+      if (gaCodelab) {
+        ga('create', gaCodelab, 'auto', {name: 'codelab'});
+      }
+
+      var gaView;
+      var parts = location.search.substring(1).split('&');
+      for (var i = 0; i < parts.length; i++) {
+        var param = parts[i].split('=');
+        if (param[0] === 'viewga') {
+          gaView = param[1];
+          break;
+        }
+      }
+      if (gaView && gaView !== gaCodelab) {
+        ga('create', gaView, 'auto', {name: 'view'});
+      }
+    })();
+  </script>
+
+</body>
+</html>
